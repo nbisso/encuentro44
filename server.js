@@ -69,9 +69,10 @@ function validarQueryParamsPersona(req, res, next) {
     next();
 }
 
+let personas = ["pedro", "juan", "jose", "jhoana"]
+
 server.get("/personas", validarQueryParamsPersona, (req, res, next) => {
     console.log(req.pepito)
-    let personas = ["pedro", "juan", "jose", "jhoana"]
     let cantidad = req.query.cantidad;
     let nombre = req.query.nombre;
 
@@ -79,6 +80,11 @@ server.get("/personas", validarQueryParamsPersona, (req, res, next) => {
     res.json(result)
 
     console.log("persona termina aca")
+})
+
+server.post("/personas", (req, res, next) => {
+    personas.push("nuevo")
+    res.send("ok")
 })
 
 
